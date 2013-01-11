@@ -1,0 +1,15 @@
+[user]
+	name = Jonathan Sternberg
+	email = jonathan.sternberg@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = auto
+[alias]
+	count = !sh -c 'git rev-list --all | wc -l'
+	last = log --decorate -1
+	logd = log --decorate
+	st = status
+	stat = status
+	tree = log --graph --oneline --decorate
+	undo = reset --hard
