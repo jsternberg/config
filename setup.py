@@ -7,12 +7,16 @@ from os.path import *
 
 def main():
     basedir, homedir = join(getcwd(), dirname(__file__)), getenv('HOME')
-    for x in [join(basedir, x) for x in listdir('.')]:
+    for x in listdir(basedir):
         if re.match(r'.*\.swp$|^\..*|.*~$|^setup\.py$', x):
             continue
-        target = join(homedir, re.sub(r'^_', '.', basename(x)))
-        print '%s -> %s' % (x, target)
-        symlink(x, target)
+        src = join(basedir, x)
+        target = join(homedir, re.sub(r'^_', '.', x))
+        print '%s -> %s' % (src, target)
+        try:
+            symlink(src, target)
+        except OSError, ex:
+            print str(ex)
 
 if __name__ == '__main__':
     main()
